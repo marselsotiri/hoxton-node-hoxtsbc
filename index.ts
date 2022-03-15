@@ -66,7 +66,7 @@ app.post('/login', async (req, res) => {
 })
 
 
-app.post('/validate-bank-info', async (req, res) => {
+app.get('/validate-bank-info', async (req, res) => {
     const  token  = req.headers.authorization
     try {
         //@ts-ignore
@@ -79,6 +79,16 @@ app.post('/validate-bank-info', async (req, res) => {
         //@ts-ignore
         res.status(400).send({ error: 'User or password invalid' })
     }
+})
+
+
+app.get('/transactions', async (req, res ) =>{
+    const  token  = req.headers.authorization
+
+    
+
+
+
 })
 
 
