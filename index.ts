@@ -67,7 +67,7 @@ app.post('/login', async (req, res) => {
 
 
 app.post('/validate-bank-info', async (req, res) => {
-    const { token } = req.body
+    const  token  = req.headers.authorization
     try {
         //@ts-ignore
         const decodedData = jwt.verify(token, process.env.MY_SECRET)
