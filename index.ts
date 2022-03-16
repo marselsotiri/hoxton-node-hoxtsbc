@@ -83,9 +83,6 @@ app.get('/banking-info', async (req, res) => {
 })
 
 
-
-
-
 app.listen(4000, () => {
     console.log('Server running: http://localhost:4000')
 })
