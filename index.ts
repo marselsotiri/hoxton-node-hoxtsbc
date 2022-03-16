@@ -12,7 +12,7 @@ app.use(express.json())
 
 const prisma = new PrismaClient({ log: ['query', 'info', 'warn', 'error'] })
 
-app.post('/sing-up', async (req, res) => {
+app.post('/singup', async (req, res) => {
     const { email, fullname, password } = req.body
     try {
         const hashedPassword = bcrypt.hashSync(password, 10)
@@ -66,7 +66,7 @@ app.post('/login', async (req, res) => {
 })
 
 
-app.get('/validate-bank-info', async (req, res) => {
+app.get('/banking-info', async (req, res) => {
     const  token  = req.headers.authorization
     try {
         //@ts-ignore
