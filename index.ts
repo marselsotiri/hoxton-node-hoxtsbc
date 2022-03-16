@@ -68,7 +68,7 @@ app.post('/login', async (req, res) => {
 
 
 app.get('/banking-info', async (req, res) => {
-    const token = req.headers.authorization
+    const token = req.headers.authorization || ''
     try {
         //@ts-ignore
         const decodedData = jwt.verify(token, process.env.MY_SECRET)
