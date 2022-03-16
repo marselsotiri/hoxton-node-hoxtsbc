@@ -12,14 +12,15 @@ app.use(express.json())
 
 const prisma = new PrismaClient({ log: ['query', 'info', 'warn', 'error'] })
 
-app.post('/singup', async (req, res) => {
-    const { email, fullname, password } = req.body
+app.post('/signup', async (req, res) => {
+    const { email, fullName, password } = req.body
+
     try {
         const hashedPassword = bcrypt.hashSync(password, 10)
 
         const user = await prisma.user.create({
             data: {
-                email: email, fullname: fullname, password: hashedPassword, amountInAccount: Math.floor(Math.random() * 100),
+                email: email, fullName: fullName, password: hashedPassword, amountInAccount: Math.floor(Math.random() * 100),
                 transactions: {
                     create: {
                         amount: 1000,
@@ -67,7 +68,7 @@ app.post('/login', async (req, res) => {
 
 
 app.get('/banking-info', async (req, res) => {
-    const  token  = req.headers.authorization
+    const token = req.headers.authorization
     try {
         //@ts-ignore
         const decodedData = jwt.verify(token, process.env.MY_SECRET)
@@ -82,14 +83,6 @@ app.get('/banking-info', async (req, res) => {
 })
 
 
-app.get('/transactions', async (req, res ) =>{
-    const  token  = req.headers.authorization
-
-    
-
-
-
-})
 
 
 
